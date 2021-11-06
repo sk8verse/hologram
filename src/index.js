@@ -1,6 +1,9 @@
-import React from 'react'
-import styles from './styles.module.css'
+import React from "react"
+import Scene from "./components/Scene"
+export { default as Scene } from "./components/Scene"
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export const ExampleComponent = () => (
+  <div style={{ height: "500px" }}>
+    <Scene controls="enabled" object="" texture="" />
+  </div>
+)
