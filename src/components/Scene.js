@@ -28,7 +28,7 @@ const Scene = ({ board, controls, object, texture }) => {
       {controls && <OrbitControls camera={myCamera.current} enableZoom />}
       <Suspense fallback={null}>
         <Deck
-          position={[0, -0.9, 0]}
+          position={[0, 0, 0]}
           scale={[0.07, 0.07, 0.07]}
           board={board}
           boards={boards}
