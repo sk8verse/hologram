@@ -1,6 +1,7 @@
 import React, { createRef, Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
-import Board from "./Board"
+import Complete from "./Complete"
+import Deck from "./Deck"
 import { boards } from "."
 import {
   Environment,
@@ -26,7 +27,7 @@ const Scene = ({ board, controls, object, texture }) => {
       <PerspectiveCamera ref={myCamera} position={[0, 5, 5]} />
       {controls && <OrbitControls camera={myCamera.current} enableZoom />}
       <Suspense fallback={null}>
-        <Board
+        <Deck
           position={[0, -0.9, 0]}
           scale={[0.07, 0.07, 0.07]}
           board={board}

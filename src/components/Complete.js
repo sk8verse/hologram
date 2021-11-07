@@ -5,7 +5,7 @@ import { boardFromId, trucks, wheels } from "."
 
 export default function Model({ ...props }) {
   const { nodes, materials } = useGLTF(
-    props.object || "https://sk8verse.xyz/viewer/sk8board.gltf"
+    props.object || "https://sk8verse.xyz/viewer/sk8deck.gltf"
   )
   const groupSkateboard = useRef()
   const groupOffsetRotation = useRef()
