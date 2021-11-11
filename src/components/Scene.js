@@ -16,7 +16,7 @@ const Scene = ({ board, controls, object, texture }) => {
     <Canvas className="w-full h-full" dispose={null} shadowMap>
       <ambientLight intensity={0.2} dispose={null} />
       <pointLight
-        intenstity={1}
+        intenstity={0.5}
         position={[0, 2, 10]}
         penumbra={1}
         castShadow

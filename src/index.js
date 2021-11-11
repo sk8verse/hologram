@@ -13,6 +13,6 @@ export const ExampleComponent = () => (
       top: 0,
     }}
   >
-    <Scene controls="enabled" texture="/sk8deck.png" />
+    <Scene controls="enabled" texture="http://localhost:3000/sk8deck.jpg" />
   </div>
 )

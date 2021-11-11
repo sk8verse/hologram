@@ -1,19 +1,16 @@
 import React, { useRef } from "react"
-import { useGLTF, useTexture } from "@react-three/drei"
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useLoader } from "@react-three/fiber"
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"
+import { TextureLoader } from "three"
 
 export default function Model({ ...props }) {
-  const { nodes, materials } = useGLTF(
-    props.object || "https://shop.sk8verse.xyz/sk8deck.gltf"
+  const texture = useLoader(
+    TextureLoader,
+    props.texture ?? "https://shop.sk8verse.xyz/sk8deck-wood.jpg"
   )
+  const obj = useLoader(OBJLoader, "https://shop.sk8verse.xyz/sk8deck.obj")
   const groupOffsetRotation = useRef()
   const groupAngleRotation = useRef()
-
-  const deckTexture = useTexture(
-    props.texture || `https://shop.sk8verse.xyz/sk8deck-wood.jpg`
-  )
-  deckTexture.flipY = false
-  deckTexture.flipX = true
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime()
@@ -24,22 +21,16 @@ export default function Model({ ...props }) {
   return (
     <group ref={groupAngleRotation}>
       <group ref={groupOffsetRotation} {...props}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes["sk8deck"].geometry}
-          material={materials["sk8deck"]}
-        >
+        <mesh castShadow receiveShadow geometry={obj.children[0].geometry}>
           <meshStandardMaterial
             {...{ metalness: 0, roughness: 1 }}
-            map={deckTexture}
+            map={texture}
             attach="material"
             key="metal"
+            toneMapped={false}
           />
         </mesh>
       </group>
     </group>
   )
 }
-
-// useGLTF.preload("/viewer/sk8board.gltf")
