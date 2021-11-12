@@ -1,13 +1,12 @@
 {
   "name": "sk8view",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "threejs viewer",
   "author": "beamercola",
   "license": "MIT",
   "repository": "beamercola/sk8view",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "type": "commonjs",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
