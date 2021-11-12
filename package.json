@@ -7,6 +7,7 @@
   "repository": "beamercola/sk8view",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "type": "commonjs",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
