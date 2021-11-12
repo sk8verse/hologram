@@ -15,7 +15,7 @@ export default function Model({ ...props }) {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime()
     groupOffsetRotation.current.rotation.x = -elapsedTime * 1 + 10
-    groupAngleRotation.current.rotation.z = -1
+    groupAngleRotation.current.rotation.z = 1
   })
 
   return (

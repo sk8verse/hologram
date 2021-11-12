@@ -2,8 +2,6 @@ import React from "react"
 import Scene from "./components/Scene"
 export { default as Scene } from "./components/Scene"
 
-export default Scene
-
 export const ExampleComponent = () => (
   <div
     style={{
@@ -13,6 +11,6 @@ export const ExampleComponent = () => (
       top: 0,
     }}
   >
-    <Scene controls="enabled" texture="http://localhost:3000/sk8deck.jpg" />
+    <Scene controls="enabled" texture="/moon.jpg" />
   </div>
 )
