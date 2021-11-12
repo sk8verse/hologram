@@ -1,9 +1,9 @@
 import React, { useRef } from "react"
 import { useFrame, useLoader } from "@react-three/fiber"
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"
+import { OBJLoader } from "./OBJLoader"
 import { TextureLoader } from "three"
 
-export default function Model({ ...props }) {
+export const Deck = ({ ...props }) => {
   const texture = useLoader(
     TextureLoader,
     props.texture ?? "https://shop.sk8verse.xyz/sk8deck-wood.jpg"

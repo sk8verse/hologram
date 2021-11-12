@@ -3,7 +3,7 @@ import { useGLTF, useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { boardFromId, trucks, wheels } from "."
 
-export default function Model({ ...props }) {
+export const Model = ({ ...props }) => {
   const { nodes, materials } = useGLTF(
     props.object || "https://sk8verse.xyz/viewer/sk8deck.gltf"
   )
