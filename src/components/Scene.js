@@ -1,6 +1,5 @@
 import React, { createRef, Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
-import Complete from "./Complete"
 import Deck from "./Deck"
 import { boards } from "."
 import {
@@ -9,12 +8,12 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei"
 
-const Scene = ({ board, controls, object, texture }) => {
+export const Scene = ({ board, controls, object, texture }) => {
   const myCamera = createRef()
 
   return (
     <Canvas className="w-full h-full" dispose={null} shadowMap>
-      <ambientLight intensity={0.2} dispose={null} />
+      <ambientLight intensity={0.5} dispose={null} />
       <pointLight
         intenstity={0.5}
         position={[0, 2, 10]}
