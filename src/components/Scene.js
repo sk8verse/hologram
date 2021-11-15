@@ -8,7 +8,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei"
 
-export const Scene = ({ board, controls, object, texture }) => {
+export const Scene = ({ board, controls, object, texture, scale }) => {
   const myCamera = createRef()
 
   return (
@@ -28,7 +28,7 @@ export const Scene = ({ board, controls, object, texture }) => {
       <Suspense fallback={null}>
         <Deck
           position={[0, 0, 0]}
-          scale={[0.07, 0.07, 0.07]}
+          scale={scale || [0.07, 0.07, 0.07]}
           board={board}
           boards={boards}
           object={object}
