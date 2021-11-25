@@ -11,6 +11,11 @@ export const ExampleComponent = () => (
       top: 0,
     }}
   >
-    <Scene controls="enabled" texture="/moon.jpg" />
+    <Scene
+      controls="enabled"
+      object="/sk8board.gltf"
+      texture="/toad.png"
+      objects={["deck", "wheels", "trucks", "bearings"]}
+    />
   </div>
 )

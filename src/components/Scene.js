@@ -8,12 +8,12 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei"
 
-export const Scene = ({ board, controls, object, texture, scale }) => {
+export const Scene = ({ board, controls, object, texture, scale, objects }) => {
   const myCamera = createRef()
 
   return (
     <Canvas className="w-full h-full" dispose={null} shadowMap>
-      <ambientLight intensity={0.5} dispose={null} />
+      <ambientLight intensity={0.1} dispose={null} />
       <pointLight
         intenstity={0.5}
         position={[0, 2, 10]}
@@ -33,6 +33,7 @@ export const Scene = ({ board, controls, object, texture, scale }) => {
           boards={boards}
           object={object}
           texture={texture}
+          objects={objects}
         />
         <Environment
           background={false}
