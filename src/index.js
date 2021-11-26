@@ -1,6 +1,6 @@
 import React from "react"
-import { Scene } from "./components/Scene"
-export default Scene
+import { Scene as Sk8View } from "./components/Scene"
+export default Sk8View
 
 export const ExampleComponent = () => (
   <div
@@ -11,7 +11,7 @@ export const ExampleComponent = () => (
       top: 0,
     }}
   >
-    <Scene
+    <Sk8View
       controls="enabled"
       objects={{
         deck: {
