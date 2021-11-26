@@ -1,6 +1,6 @@
 import React from "react"
 import { Scene as Sk8View } from "./components/Scene"
-export default Sk8View
+export { Sk8View }
 
 export const ExampleComponent = () => (
   <div
