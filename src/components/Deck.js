@@ -4,16 +4,16 @@ import { useFrame } from "@react-three/fiber"
 
 const Deck = props => {
   const { nodes } = useGLTF(
-    props.object ||
-      "https://assets.takeshape.io/77c3167c-240a-4def-80b3-ff7670f8cd4d/dev/1712ea22-e8d1-4701-b52b-31deba600abf/sk8board.gltf"
+    props.object || "https://sk8verse.s3.us-west-1.amazonaws.com/sk8board.gltf"
   )
 
   const boardTexture = useTexture(
-    "https://images.takeshape.io/77c3167c-240a-4def-80b3-ff7670f8cd4d/dev/83bafc72-318f-47c8-b764-d910525a2d4d/sk8deck-wood.jpg"
+    "https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg"
   )
 
   const deckTexture = useTexture(
-    props.texture || `https://shop.sk8verse.xyz/sk8deck-wood.jpg`
+    props.texture ||
+      `https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg`
   )
   deckTexture.flipY = false
 
