@@ -1,8 +1,7 @@
-import React, { createRef, Suspense, createContext, useState } from "react"
-import { Canvas } from "@react-three/fiber"
+import React, { createRef, Suspense, useRef } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
 import Board from "./Board"
 import SceneContext from "./SceneContext"
-import { boards } from "."
 
 import {
   Environment,
@@ -10,46 +9,27 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei"
 
-export const DEFAULTS = {
-  DECK: { texture: "", metalness: 0, roughness: 0.85 },
-  TRUCKS: { texture: "", metalness: 1, roughness: 0.2, color: 0xcccccc },
-  WHEELS: { texture: "", metalness: 0, roughness: 0.85, color: 0xe3d4ab },
-  BEARINGS: { texture: "", metalness: 1, roughness: 0, color: 0x999999 },
-  RIM: { texture: "", metalness: 0, roughness: 0.85 },
-}
-
-export const DEFAULT = {
-  lighting: {
-    ambient: {
-      intensity: 0.1,
-    },
-    point: {
-      intensity: 0.5,
-      position: [0, 2, 10],
-      penumbra: 1,
-      width: 512,
-      height: 512,
-    },
-  },
-  camera: {
-    position: [0, 5, 5],
-  },
-  objects: {
-    rim: DEFAULTS.RIM,
-    deck: DEFAULTS.DECK,
-  },
-}
-
 export const Scene = ({
   controls,
-  texture,
   scale,
+  position,
   objects,
   camera,
   ambientLight,
   pointLight,
+  rotate = true,
 }) => {
   const cameraRef = createRef()
+  const meshRotation = useRef()
+  const meshAngleRotation = useRef()
+
+  useFrame(({ clock }) => {
+    if (!rotate) return
+    const elapsedTime = clock.getElapsedTime()
+    meshRotation.current.rotation.z = -elapsedTime * 1 + 10
+    meshAngleRotation.current.rotation.y = 1
+    meshAngleRotation.current.rotation.x = 2
+  })
 
   return (
     <SceneContext.Provider
@@ -60,15 +40,16 @@ export const Scene = ({
         style={{ width: "100%", height: "100%" }}
         dispose={null}
       >
-        <ambientLight intensity={ambientLight.intensity} dispose={null} />
+        <ambientLight {...ambientLight} intenstity={0.1} dispose={null} />
 
         <pointLight
-          intenstity={pointLight.intensity}
-          position={pointLight.position}
-          penumbra={pointLight.penumbra}
+          intenstity={0.5}
+          position={[0, 2, 10]}
+          penumbra={1}
           castShadow
-          shadow-mapSize-height={pointLight.height}
-          shadow-mapSize-width={pointLight.width}
+          shadow-mapSize-height={512}
+          shadow-mapSize-width={512}
+          {...pointLight}
         />
 
         <PerspectiveCamera ref={cameraRef} position={camera.position} />
@@ -76,7 +57,11 @@ export const Scene = ({
         {controls && <OrbitControls camera={cameraRef.current} enableZoom />}
 
         <Suspense fallback={null}>
-          <Board />
+          <group ref={meshAngleRotation}>
+            <group ref={meshRotation} scale={scale} position={position}>
+              <Board />
+            </group>
+          </group>
 
           <Environment
             background={false}

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { useTexture } from "@react-three/drei"
 import SceneContext from "./SceneContext"
 
-const Deck = ({ getGeometry, ...props }) => {
+const Deck = ({ geometry, rimGeometry, ...props }) => {
   const { objects } = useContext(SceneContext)
 
   const baseTexture = useTexture(
@@ -15,11 +15,11 @@ const Deck = ({ getGeometry, ...props }) => {
   )
   deckTexture.flipY = false
 
-  const deckProps = { ...objects.deck, metalness: 0, roughness: 0.85 }
+  const deckProps = { metalness: 0, roughness: 0.85, ...objects.deck }
 
   return (
     <group>
-      <mesh castShadow receiveShadow geometry={getGeometry("deck-rim")}>
+      <mesh castShadow receiveShadow geometry={geometry}>
         <meshStandardMaterial
           metalness={0}
           roughness={0.85}
@@ -29,7 +29,7 @@ const Deck = ({ getGeometry, ...props }) => {
           toneMapped={false}
         />
       </mesh>
-      <mesh castShadow receiveShadow geometry={getGeometry("deck-wrap")}>
+      <mesh castShadow receiveShadow geometry={rimGeometry}>
         <meshStandardMaterial
           {...deckProps}
           map={deckTexture}

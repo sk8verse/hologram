@@ -1,6 +1,6 @@
 import React from "react"
 import { Scene } from "./components/Scene"
-export { Scene } from "./components/Scene"
+export default Scene
 
 export const ExampleComponent = () => (
   <div
