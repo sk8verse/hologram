@@ -13,9 +13,12 @@ export const ExampleComponent = () => (
   >
     <Scene
       controls="enabled"
-      object="/sk8board.gltf"
-      texture="/toad.png"
-      objects={["deck", "wheels", "trucks", "bearings"]}
+      objects={{
+        deck: {
+          texture:
+            "https://sk8project.imgix.net/cryptoadz/1?w=2048&h=2048&fit=fill&fill-color=black",
+        },
+      }}
     />
   </div>
 )

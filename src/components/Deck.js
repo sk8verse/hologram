@@ -19,7 +19,7 @@ const Deck = ({ geometry, rimGeometry, ...props }) => {
 
   return (
     <group>
-      <mesh castShadow receiveShadow geometry={geometry}>
+      <mesh castShadow receiveShadow geometry={rimGeometry}>
         <meshStandardMaterial
           metalness={0}
           roughness={0.85}
@@ -29,7 +29,7 @@ const Deck = ({ geometry, rimGeometry, ...props }) => {
           toneMapped={false}
         />
       </mesh>
-      <mesh castShadow receiveShadow geometry={rimGeometry}>
+      <mesh castShadow receiveShadow geometry={geometry}>
         <meshStandardMaterial
           {...deckProps}
           map={deckTexture}

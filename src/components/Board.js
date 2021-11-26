@@ -14,7 +14,7 @@ const Board = () => {
   const hasObject = key => Object.keys(objects).includes(key)
 
   return (
-    <>
+    <group>
       {hasObject("deck") && (
         <Deck geometry={geo("deck-wrap")} rimGeometry={geo("deck-rim")} />
       )}
@@ -26,9 +26,10 @@ const Board = () => {
               metalness={0}
               roughness={0.85}
               attach="material"
-              key="metal"
+              key="wheels"
               toneMapped={false}
               color={0xe3d4ab}
+              {...objects.wheels}
             />
           </mesh>
         )}
@@ -39,7 +40,7 @@ const Board = () => {
               metalness={1}
               roughness={0}
               attach="material"
-              key="metal"
+              key="bearings"
               toneMapped={false}
               color={0x999999}
             />
@@ -52,14 +53,14 @@ const Board = () => {
               metalness={1}
               roughness={0.2}
               attach="material"
-              key="metal"
+              key="trucks"
               toneMapped={false}
               color={0xcccccc}
             />
           </mesh>
         )}
       </group>
-    </>
+    </group>
   )
 }
 
