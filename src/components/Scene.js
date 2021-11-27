@@ -1,46 +1,65 @@
 import React, { createRef, Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
-import Deck from "./Deck"
-import { boards } from "."
+import Board from "./Board"
+import SceneContext from "./SceneContext"
+import Rotation from "./Rotation"
+
 import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei"
 
-export const Scene = ({ board, controls, object, texture, scale, objects }) => {
-  const myCamera = createRef()
+export const Scene = ({
+  controls,
+  scale = [0.07, 0.07, 0.07],
+  position = [0, 0, 0],
+  objects,
+  camera,
+  lightingAmbient,
+  lightingPoint,
+  rotate = true,
+}) => {
+  const cameraRef = createRef()
 
   return (
-    <Canvas className="w-full h-full" dispose={null} shadowMap>
-      <ambientLight intensity={0.1} dispose={null} />
-      <pointLight
-        intenstity={0.5}
-        position={[0, 2, 10]}
-        penumbra={1}
-        castShadow
-        shadow-mapSize-height={512}
-        shadow-mapSize-width={512}
-      />
+    <Canvas shadowMap style={{ width: "100%", height: "100%" }} dispose={null}>
+      <ambientLight intensity={0.5} {...lightingAmbient} dispose={null} />
+      <SceneContext.Provider
+        value={{
+          objects,
+          scale,
+          camera,
+          rotate,
+          position,
+        }}
+      >
+        <pointLight
+          intensity={0.5}
+          position={[0, 2, 10]}
+          penumbra={1}
+          castShadow
+          shadow-mapSize-height={512}
+          shadow-mapSize-width={512}
+          {...lightingPoint}
+        />
 
-      <PerspectiveCamera ref={myCamera} position={[0, 5, 5]} />
-      {controls && <OrbitControls camera={myCamera.current} enableZoom />}
-      <Suspense fallback={null}>
-        <Deck
-          position={[0, 0, 0]}
-          scale={scale || [0.07, 0.07, 0.07]}
-          board={board}
-          boards={boards}
-          object={object}
-          texture={texture}
-          objects={objects}
-        />
-        <Environment
-          background={false}
-          files={["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]}
-          path="https://sk8verse.xyz/viewer/environment/"
-        />
-      </Suspense>
+        <PerspectiveCamera ref={cameraRef} position={[0, 0, 0]} {...camera} />
+
+        {controls && <OrbitControls camera={cameraRef.current} enableZoom />}
+
+        <Suspense fallback={null}>
+          <Rotation>
+            <Board />
+          </Rotation>
+
+          <Environment
+            background={false}
+            files={["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]}
+            path="https://sk8verse.xyz/viewer/environment/"
+          />
+        </Suspense>
+      </SceneContext.Provider>
     </Canvas>
   )
 }

@@ -1,21 +1,23 @@
 import React from "react"
-import { Scene } from "./components/Scene"
-export { Scene } from "./components/Scene"
+import { Scene as Sk8View } from "./components/Scene"
+import { wrap } from "./components/Texture"
+export { Sk8View, wrap }
 
 export const ExampleComponent = () => (
   <div
     style={{
-      position: "fixed",
-      width: "100vw",
-      height: "100vh",
-      top: 0,
+      width: "100%",
+      height: "100%",
     }}
   >
-    <Scene
+    <Sk8View
       controls="enabled"
-      object="/sk8board.gltf"
-      texture="/toad.png"
-      objects={["deck", "wheels", "trucks", "bearings"]}
+      objects={{
+        deck: {
+          texture:
+            "https://sk8project.imgix.net/cryptoadz/1?w=2048&h=2048&fit=fill&fill-color=black",
+        },
+      }}
     />
   </div>
 )
