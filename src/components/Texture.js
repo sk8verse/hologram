@@ -1,19 +1,34 @@
-const { createCanvas, Image } = require("canvas")
+const { createCanvas, loadImage } = require("canvas")
 
 const size = 2048
 
-module.exports = (left, right) => {
+export const wrap = async (top, bottom) => {
   const canvas = createCanvas(size, size)
   const ctx = canvas.getContext("2d")
 
-  // ctx.translate(100, 0)
-  const leftImage = new Image()
-  leftImage.src = left
-  ctx.drawImage(leftImage, 100, 0, 1200, size)
+  if (top) {
+    const topImage = await loadImage(top)
+    ctx.drawImage(topImage, 256 + 768, 0, 768, size)
+  }
 
-  const rightImage = new Image()
-  rightImage.src = right
-  ctx.drawImage(rightImage, 100 + 1200, 0, 1200, size)
+  if (bottom) {
+    const bottomImage = await loadImage(bottom)
+    const aspect = bottomImage.height * 0.375
+    console.log(aspect)
+
+    ctx.drawImage(
+      bottomImage,
+      bottomImage.width / 2 - aspect / 2,
+      0,
+      aspect,
+      bottomImage.height,
+      256,
+      0,
+      768,
+      size
+    )
+    // ctx.drawImage(bottomImage, 256, 0, 768, size)
+  }
 
   return canvas.toDataURL()
 }

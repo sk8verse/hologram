@@ -1,14 +1,13 @@
 import React from "react"
 import { Scene as Sk8View } from "./components/Scene"
-export { Sk8View }
+import { wrap } from "./components/Texture"
+export { Sk8View, wrap }
 
 export const ExampleComponent = () => (
   <div
     style={{
-      position: "fixed",
-      width: "100vw",
-      height: "100vh",
-      top: 0,
+      width: "100%",
+      height: "100%",
     }}
   >
     <Sk8View
