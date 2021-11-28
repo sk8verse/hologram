@@ -1,15 +1,18 @@
 {
-  "name": "sk8view",
-  "version": "1.0.31",
+  "name": "@sk8verse/hologram",
+  "version": "1.1.0",
   "description": "threejs viewer",
   "author": "beamercola",
   "license": "MIT",
-  "repository": "beamercola/sk8view",
+  "repository": "sk8verse/hologram",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
