@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { Sk8View, wrap } from "sk8view"
-import "sk8view/dist/index.css"
+import { Sk8Hologram } from "@sk8verse/hologram"
+import { makeBento } from "@sk8verse/bento"
 
 const App = () => {
   const [bottom, setBottom] = useState()
@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     const fn = async () => {
-      setTexture(await wrap(top, bottom))
+      setTexture((await makeBento(bottom, top)).toDataURL())
     }
     fn()
   }, [top, bottom])
@@ -29,7 +29,7 @@ const App = () => {
       }}
     >
       <div style={{ width: "600px", height: "600px" }}>
-        <Sk8View objects={{ deck: { texture } }} />
+        <Sk8Hologram objects={{ deck: { texture } }} />
       </div>
       <div className="">
         <h4>Bottom:</h4>

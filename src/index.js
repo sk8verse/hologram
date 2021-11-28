@@ -1,7 +1,7 @@
 import React from "react"
-import { Scene as Sk8View } from "./components/Scene"
+import { Scene as Sk8Hologram } from "./components/Scene"
 import { wrap } from "./components/Texture"
-export { Sk8View, wrap }
+export { Sk8Hologram, wrap }
 
 export const ExampleComponent = () => (
   <div
@@ -10,7 +10,7 @@ export const ExampleComponent = () => (
       height: "100%",
     }}
   >
-    <Sk8View
+    <Sk8Hologram
       controls="enabled"
       objects={{
         deck: {

@@ -7,7 +7,7 @@ const Board = () => {
   const { objects } = useContext(SceneContext)
 
   const { nodes } = useGLTF(
-    "https://sk8verse.s3.us-west-1.amazonaws.com/sk8board.gltf"
+    "https://sk8verse.sfo3.cdn.digitaloceanspaces.com/sk8board.gltf"
   )
 
   const geo = key => nodes[key].geometry
