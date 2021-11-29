@@ -1,7 +1,6 @@
 import React from "react"
 import { Scene as Sk8Hologram } from "./components/Scene"
-import { wrap } from "./components/Texture"
-export { Sk8Hologram, wrap }
+export { Sk8Hologram }
 
 export const ExampleComponent = () => (
   <div
