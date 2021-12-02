@@ -6,14 +6,15 @@ const Deck = ({ geometry, rimGeometry, ...props }) => {
   const { sprite } = useContext(SceneContext)
 
   const baseTexture = useTexture(
-    "https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg"
+    "https://sk8verse.sfo3.cdn.digitaloceanspaces.com/founder/sk8deck-gold.jpg"
   )
 
   const deckTexture = useTexture(
-    sprite?.deck?.texture ||
-      `https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg`
+    sprite?.bento ||
+      `https://sk8verse.sfo3.cdn.digitaloceanspaces.com/founder/sk8deck-gold.jpg`
   )
-  deckTexture.flipY = true
+  deckTexture.flipY = false
+  deckTexture.flipX = true
 
   const deckProps = { metalness: 0, roughness: 0.85, ...sprite.deck }
 
