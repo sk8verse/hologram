@@ -3,19 +3,19 @@ import { useTexture } from "@react-three/drei"
 import SceneContext from "./SceneContext"
 
 const Deck = ({ geometry, rimGeometry, ...props }) => {
-  const { objects } = useContext(SceneContext)
+  const { sprite } = useContext(SceneContext)
 
   const baseTexture = useTexture(
     "https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg"
   )
 
   const deckTexture = useTexture(
-    objects?.deck?.texture ||
+    sprite?.deck?.texture ||
       `https://sk8verse.s3.us-west-1.amazonaws.com/sk8deck-wood.jpg`
   )
-  deckTexture.flipY = false
+  deckTexture.flipY = true
 
-  const deckProps = { metalness: 0, roughness: 0.85, ...objects.deck }
+  const deckProps = { metalness: 0, roughness: 0.85, ...sprite.deck }
 
   return (
     <group>

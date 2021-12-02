@@ -4,14 +4,13 @@ import SceneContext from "./SceneContext"
 import Deck from "./Deck"
 
 const Board = () => {
-  const { objects } = useContext(SceneContext)
-
+  const { sprite } = useContext(SceneContext)
   const { nodes } = useGLTF(
     "https://sk8verse.sfo3.cdn.digitaloceanspaces.com/sk8board.gltf"
   )
 
   const geo = key => nodes[key].geometry
-  const hasObject = key => Object.keys(objects).includes(key)
+  const hasObject = key => Object.keys(sprite).includes(key)
 
   return (
     <group>
@@ -29,7 +28,7 @@ const Board = () => {
               key="wheels"
               toneMapped={false}
               color={0xe3d4ab}
-              {...objects.wheels}
+              {...sprite.wheels}
             />
           </mesh>
         )}

@@ -14,7 +14,7 @@ export const Scene = ({
   controls,
   scale = [0.07, 0.07, 0.07],
   position = [0, 0, 0],
-  objects,
+  sprite,
   camera,
   lightingAmbient,
   lightingPoint,
@@ -27,7 +27,7 @@ export const Scene = ({
       <ambientLight intensity={0.5} {...lightingAmbient} dispose={null} />
       <SceneContext.Provider
         value={{
-          objects,
+          sprite,
           scale,
           camera,
           rotate,
