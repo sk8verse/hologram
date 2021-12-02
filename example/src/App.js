@@ -29,7 +29,7 @@ const App = () => {
       }}
     >
       <div style={{ width: "600px", height: "600px" }}>
-        <Sk8Hologram sprite={{ bento: texture, deck: {} }} />
+        <Sk8Hologram sprite={undefined} />
       </div>
       <div className="">
         <h4>Bottom:</h4>
