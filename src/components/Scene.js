@@ -56,7 +56,7 @@ export const Scene = ({
           <Environment
             background={false}
             files={["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]}
-            path="https://sk8verse.xyz/viewer/environment/"
+            path="https://sk8verse.sfo3.cdn.digitaloceanspaces.com/environment/"
           />
         </Suspense>
       </SceneContext.Provider>
