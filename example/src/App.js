@@ -1,7 +1,7 @@
 import React from "react"
 import { Sk8Hologram } from "@sk8verse/hologram"
 
-const bento = ""
+const bento = "https://sk8bento.imgix.net/design/tart-broken-alligator"
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
       }}
     >
       <div style={{ width: "600px", height: "600px" }}>
-        <Sk8Hologram sprite={{ bento }} />
+        <Sk8Hologram sprite={{ bento, deck: {} }} />
       </div>
     </div>
   )

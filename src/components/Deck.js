@@ -10,8 +10,7 @@ const Deck = ({ geometry, rimGeometry, ...props }) => {
   )
 
   const deckTexture = useTexture(
-    sprite?.bento ||
-      `https://sk8verse.sfo3.cdn.digitaloceanspaces.com/founder/sk8deck-wood.jpg`
+    sprite?.bento || `https://sk8bento.imgix.net/design/tart-broken-alligator`
   )
   deckTexture.flipY = false
   deckTexture.flipX = true
