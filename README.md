@@ -1,13 +1,13 @@
 # sk8view
 
-> threejs viewer
+> Client side three-dee sk8board
 
 [![NPM](https://img.shields.io/npm/v/sk8view.svg)](https://www.npmjs.com/package/sk8view) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save sk8view
+yarn add sk8view
 ```
 
 ## Usage
@@ -15,13 +15,12 @@ npm install --save sk8view
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'sk8view'
-import 'sk8view/dist/index.css'
+import { Hologram } from 'sk8view'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+export default function Component() {
+  const [bento, setBento] = useState("/object/1138")
+  
+  return <Hologram bento={bento} />
 }
 ```
 
